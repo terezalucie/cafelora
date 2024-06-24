@@ -8,9 +8,13 @@ import { Gallery } from  '../components/Gallery/gallery';
 import { Contact } from  '../components/Contact/contact';
 import { Footer } from '../components/Footer/footer';
 
-const response = await fetch("http://localhost:4000/api/drinks")
-const json = await response.json()
-const drinks = json.data
+const  fetchGet = async () => {
+  const response = await fetch("http://localhost:4000/api/drinks")
+  const json = await response.json()
+  return json.data
+}
+
+const drinks = await fetchGet()
 
 
 document.querySelector('#root').innerHTML = render(
@@ -36,3 +40,32 @@ document.querySelector(".nav-btn").addEventListener("click", () => {
 rolloutNav.addEventListener("click", () => {
   rolloutNav.classList.add("nav-closed")
 })
+
+const order = document.querySelectorAll(".drink__controls")
+
+order.forEach(item => {
+  item.addEventListener("click", async (event) => {
+      const idDrink = event.target.id
+      
+      if(drinks[idDrink].ordered){
+        await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify([{ op: 'replace', path: '/ordered', value: false}])
+        })
+        window.location.reload()
+      } else{
+        await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify([{ op: 'replace', path: '/ordered', value: true}])
+        })
+        window.location.reload()
+      }
+  })
+})
+
