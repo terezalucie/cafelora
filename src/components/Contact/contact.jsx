@@ -1,7 +1,7 @@
 import "./contact.css"
 
 export const Contact = () => (
-    <section>
+    <section id="">
         <div className="container">
         <h2>Kde nás najdete</h2>
         <div className="contact">
