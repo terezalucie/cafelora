@@ -26,7 +26,7 @@ export const Header = ({showMenu}) => {
                             <div className="navigation">
                                 <button className="nav-btn"></button>
                                 <nav className="rollout-nav nav-closed">
-                                <a href="/index.html">domů</a>
+                                <a href="/index.html">hlavní stránka</a>
                                 </nav>
                             </div>
                         </div>

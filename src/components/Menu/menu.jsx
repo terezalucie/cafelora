@@ -2,7 +2,7 @@ import { Drink } from "../Drink/drink"
 import "./menu.css"
 
 export const Menu = ({ drinks }) => (
-    <section id="" className="menu">
+    <section className="menu">
       <div className="container">
         <h2>Naše nabídka</h2>
         <p className="menu-intro">

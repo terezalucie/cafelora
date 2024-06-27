@@ -1,3 +1,4 @@
+import "./order.css"
 import { OrderItem } from "../OrderItem/orderItem"
 
 export const Order = ({ items }) => {

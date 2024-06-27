@@ -1,3 +1,5 @@
+import "./orderItem.css"
+
 export const OrderItem = ({ name, image }) => (
 
     <div className="order-item">

@@ -14,13 +14,15 @@ const order = json.data
 document.querySelector('#root').innerHTML = render(
   <div className="page">
     <div className="page">
-      <Header />
+      <Header showMenu={false} />
       <Order items={order} />
       <Footer />
     </div>
   </div>
 );
 
+/* Zadání - První část - 3 - 3.2 a 
+ */
 const rolloutNav = document.querySelector(".rollout-nav")
 
 document.querySelector(".nav-btn").addEventListener("click", () => {
