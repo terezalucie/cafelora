@@ -12,12 +12,11 @@ const json = await response.json()
 const order = json.data
 
 document.querySelector('#root').innerHTML = render(
+  
   <div className="page">
-    <div className="page">
-      <Header showMenu={false} />
-      <Order items={order} />
-      <Footer />
-    </div>
+    <Header showMenu={false} />
+    <Order items={order} />
+    <Footer />
   </div>
 );
 

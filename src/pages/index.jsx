@@ -31,7 +31,7 @@ document.querySelector('#root').innerHTML = render(
 );
 
 /* Zadání - První část - 3 - 3.2 a 
- */
+*/
 const rolloutNav = document.querySelector(".rollout-nav")
 
 document.querySelector(".nav-btn").addEventListener("click", () => {
@@ -43,15 +43,15 @@ rolloutNav.addEventListener("click", () => {
 })
 
 
-/* Zadání - Druhá část - 7 - 7.4, 7.5, 7.6., 7.7 */
-
+/* Zadání - Druhá část - 7 - 7.4, 7.5, 7.6., 7.7 
+*/
 const orderForms = document.querySelectorAll("form")
 
 orderForms.forEach(order => {
   order.addEventListener("submit", async (event) => {
       const idDrink = event.target.dataset.id
       
-      if(drinks[idDrink].ordered){
+      if(drinks[idDrink].ordered) {
         await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
           method: "PATCH",
           headers: {
@@ -60,7 +60,7 @@ orderForms.forEach(order => {
           body: JSON.stringify([{ op: 'replace', path: '/ordered', value: false}])
         })
         window.location.reload()
-      } else{
+      } else {
         await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
           method: "PATCH",
           headers: {

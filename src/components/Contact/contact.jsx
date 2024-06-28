@@ -11,12 +11,12 @@ export const Contact = () => (
                 Tel: +420 775 334 427
                 </div>
                 <table className="contact__hours">
-                <tr><td>Pondělí</td><td>ZAVŘENO</td></tr>
-                <tr><td>Úterý</td><td>11:00 - 22:00</td></tr>
-                <tr><td>Středa</td><td>11:00 - 22:00</td></tr>
-                <tr><td>Čtvrtek</td><td>11:00 - 22:00</td></tr>
-                <tr><td>Sobota</td><td>9:00 - 02:00</td></tr>
-                <tr><td>Neděle</td><td>9:00 - 02:00</td></tr>
+                    <tr><td>Pondělí</td><td>ZAVŘENO</td></tr>
+                    <tr><td>Úterý</td><td>11:00 - 22:00</td></tr>
+                    <tr><td>Středa</td><td>11:00 - 22:00</td></tr>
+                    <tr><td>Čtvrtek</td><td>11:00 - 22:00</td></tr>
+                    <tr><td>Sobota</td><td>9:00 - 02:00</td></tr>
+                    <tr><td>Neděle</td><td>9:00 - 02:00</td></tr>
                 </table>
                 <img
                 className="contact__map"
