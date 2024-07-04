@@ -45,33 +45,24 @@ rolloutNav.addEventListener("click", () => {
 
 /* Zadání - Druhá část - 7 - 7.4, 7.5, 7.6., 7.7 
 */
-let editOrder = null 
+
 const orderForms = document.querySelectorAll("form")
 
-orderForms.forEach((order, index) => {
-  order.addEventListener("submit", async (event) => {
+orderForms.forEach(order=> {
+  order.addEventListener("submit", async (e) => {
 
-      const idDrink = Number(event.target.dataset.id)
-      editOrder = drinks.find(item => item.id === idDrink)
+      let editOrder = null 
+      const idDrink = Number(e.target.dataset.id)
 
-      if(drinks[index].ordered) {
-        await fetch(`http://localhost:4000/api/drinks/${editOrder.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify([{ op: 'replace', path: '/ordered', value: false}])
-        })
-        window.location.reload()
-      } else {
-        await fetch(`http://localhost:4000/api/drinks/${editOrder.id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify([{ op: 'replace', path: '/ordered', value: true}])
-        })
-        window.location.reload()
-      }
+      drinks[idDrink].ordered ? editOrder = [{ op: 'replace', path: '/ordered', value: false}] : editOrder = [{ op: 'replace', path: '/ordered', value: true}]
+
+      await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editOrder)
+      })
+      window.location.reload()
   })
 }) 
