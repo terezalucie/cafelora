@@ -45,14 +45,17 @@ rolloutNav.addEventListener("click", () => {
 
 /* Zadání - Druhá část - 7 - 7.4, 7.5, 7.6., 7.7 
 */
+let editOrder = null 
 const orderForms = document.querySelectorAll("form")
 
-orderForms.forEach(order => {
+orderForms.forEach((order, index) => {
   order.addEventListener("submit", async (event) => {
-      const idDrink = event.target.dataset.id
-      
-      if(drinks[idDrink].ordered) {
-        await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
+
+      const idDrink = Number(event.target.dataset.id)
+      editOrder = drinks.find(item => item.id === idDrink)
+
+      if(drinks[index].ordered) {
+        await fetch(`http://localhost:4000/api/drinks/${editOrder.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json"
@@ -61,7 +64,7 @@ orderForms.forEach(order => {
         })
         window.location.reload()
       } else {
-        await fetch(`http://localhost:4000/api/drinks/${idDrink}`, {
+        await fetch(`http://localhost:4000/api/drinks/${editOrder.id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json"
@@ -71,5 +74,4 @@ orderForms.forEach(order => {
         window.location.reload()
       }
   })
-})
-
+}) 
